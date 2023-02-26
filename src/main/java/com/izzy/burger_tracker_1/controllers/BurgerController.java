@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,7 +57,7 @@ public class BurgerController {
     return "/edit.jsp";
   }
   // vvvvvvv POST vvvvvvv
-  @PutMapping("/burgers/{id}")
+  @PostMapping("/burgers/{id}")
   public String update(@Valid @ModelAttribute("burger") Burger burger, BindingResult result) {
     if (result.hasErrors()) {
       return "/edit.jsp";
@@ -65,5 +66,13 @@ public class BurgerController {
     }
     return "redirect:/";
   }
+  
+  // ============ DELETE ============
+  @DeleteMapping("/burgers/{id}")
+  public String destroy(@PathVariable("id") Long id) {
+    burgerService.deleteBurger(id);
+    return "redirect:/";
+  }
+
 
 }

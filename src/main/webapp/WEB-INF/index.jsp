@@ -49,9 +49,15 @@ pageEncoding="UTF-8"%>
                     <td class="text-center">
                       <c:out value="${burger.rating}"></c:out>
                     </td>
-                    <td class="text-center">
-                      <a href="/burgers/edit/${burger.id}">Edit</a>
-                    </td>
+                    <td>
+                      <div class="d-flex justify-content-around">
+                        <a href="/burgers/edit/${burger.id}">Edit</a>
+                        <form action="/burgers/${burger.id}" method="post">
+                          <input type="hidden" name="_method" value="delete">
+                          <input style="background-color:red" type="submit" value="Delete">
+                                            </form>
+                      </div>
+                                        </td>
                   </tr>
                 </c:forEach>
               </tbody>

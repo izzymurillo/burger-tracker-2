@@ -32,6 +32,7 @@ public class BurgerService {
 
   // ========== FIND BY ID ==========
   public Burger findBurger(Long id) {
+    // use Optional in case the burger doesn't exist
     Optional<Burger> optionalBurger = burgerRepository.findById(id);
     if (optionalBurger.isPresent()) {
       return optionalBurger.get();
@@ -44,6 +45,11 @@ public class BurgerService {
   // (exactly the same as create)
   public Burger updateBurger(Burger burger) {
     return burgerRepository.save(burger);
+  }
+  
+  // =========== DELETE ===========
+  public void deleteBurger(Long id) {
+    burgerRepository.deleteById(id);
   }
 
 }
