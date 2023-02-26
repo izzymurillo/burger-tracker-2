@@ -12,7 +12,7 @@ pageEncoding="UTF-8"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Burger Tracker 2</title>
+    <title>Burger Tracker 1</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/darkly.css" />
     <!-- change to match your file/naming structure -->
@@ -22,51 +22,12 @@ pageEncoding="UTF-8"%>
   </head>
   <body>
     <div class="container m-5">
-      <div class="card">
-        <div class="card-header">
-          <h1>Burger Tracker 2</h1>
-        <div class="card-body">
-            <table class="table border">
-              <thead>
-                <tr>
-                  <th>Burger Name</th>
-                  <th>Restaurant Name</th>
-                  <th class="text-center">Rating (out of 5)</th>
-                  <th class="text-center">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <c:forEach var="burger" items="${burgers}">
-                  <tr>
-                    <td>
-                      <!-- <a href="/burgers/${burger.id}"> -->
-                        <c:out value="${burger.burgerName}"></c:out>
-                      <!-- </a> -->
-                    </td>
-                    <td>
-                      <c:out value="${burger.restaurantName}"></c:out>
-                    </td>
-                    <td class="text-center">
-                      <c:out value="${burger.rating}"></c:out>
-                    </td>
-                    <td class="text-center">
-                      <a href="/burgers/edit/${burger.id}">Edit</a>
-                    </td>
-                  </tr>
-                </c:forEach>
-              </tbody>
-            </table>
-        </div>
-        </div>
-      </div>
       <div class="card mt-5">
-        <div class="card-header">
-          <h1>Add a Burger:</h1>
+        <div class="card-header d-flex justify-content-between">
+          <h1>Edit Burger</h1>
+          <a href="/">Go Back</a>
         </div>
         <div class="card-body">
-          <div class="card-title">
-            <span style="color:red"><h5>Notes must not be blank</h5></span>
-          </div>
           <form:form action="/burgers" method="post" modelAttribute="burger" class="form-control mb-3">
             <form:label class="form-label" path="burgerName"><h4>Burger Name</h4></form:label>
             <form:errors path="burgerName" style="color:red"/>
